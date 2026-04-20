@@ -1,0 +1,546 @@
+/* ═══════════════════════════════════════════════════════════
+   Noygear · Copper · landing + thesis
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Reset ─────────────────────────────────────────────── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: #fdf6ec; color: #2d1c09;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+/* ── Layout shell ──────────────────────────────────────── */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 64px; }
+
+/* ── Top nav ───────────────────────────────────────────── */
+nav.site-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 28px 64px; border-bottom: 1px solid #e8d8c0;
+  background: #fdf6ec;
+}
+.logo {
+  font-family: 'Playfair Display', serif; font-size: 24px;
+  font-weight: 600; letter-spacing: -0.01em; color: #2d1c09;
+  text-decoration: none;
+}
+.navlinks { display: flex; gap: 26px; }
+.navlinks a {
+  color: #6b4c2a; text-decoration: none;
+  font-family: 'Space Grotesk', sans-serif; font-size: 13px;
+  letter-spacing: 0.04em; transition: color 0.15s;
+}
+.navlinks a:hover { color: #b5521c; }
+
+/* ── Hero ──────────────────────────────────────────────── */
+.hero {
+  padding: 80px 0 60px;
+  display: grid; grid-template-columns: 1.25fr 1fr; gap: 60px; align-items: start;
+}
+.hero-text .kicker {
+  font-family: 'Space Grotesk', sans-serif; font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: #b5521c; margin-bottom: 24px;
+}
+.hero-text h1 {
+  font-family: 'Playfair Display', serif; font-size: 74px; font-weight: 400;
+  line-height: 1.02; letter-spacing: -0.02em; margin-bottom: 28px;
+}
+.hero-text h1 em { font-style: italic; color: #b5521c; }
+.hero-text p {
+  font-size: 19px; line-height: 1.65; color: #4a2f17;
+  margin-bottom: 28px; max-width: 560px;
+}
+.cta-copper {
+  display: inline-block; padding: 14px 26px;
+  background: #b5521c; color: #fdf6ec; border-radius: 2px;
+  font-family: 'Space Grotesk', sans-serif; font-size: 13px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  text-decoration: none; transition: background 0.15s;
+}
+.cta-copper:hover { background: #8a3e14; }
+
+.hero-right { display: flex; flex-direction: column; gap: 16px; }
+.copper-card {
+  padding: 22px 26px; background: #ffffff; border: 1px solid #e8d8c0;
+  border-radius: 2px;
+}
+.copper-card h3 {
+  font-family: 'Playfair Display', serif; font-size: 18px;
+  font-weight: 600; margin-bottom: 8px; color: #2d1c09;
+}
+.copper-card p {
+  font-family: 'Space Grotesk', sans-serif; font-size: 13px;
+  line-height: 1.6; color: #6b4c2a;
+}
+
+/* ── Credentials strip ─────────────────────────────────── */
+.credentials-strip {
+  padding: 40px 48px; background: #fcebd5; display: grid;
+  grid-template-columns: repeat(5, 1fr); gap: 24px;
+  border: 1px solid #e8d8c0; border-radius: 2px;
+}
+.credentials-strip .n {
+  font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 500;
+  color: #2d1c09; line-height: 1;
+}
+.credentials-strip .l {
+  font-family: 'Space Grotesk', sans-serif; font-size: 11px;
+  color: #8a6a4a; margin-top: 10px; line-height: 1.5; letter-spacing: 0.04em;
+}
+
+/* ── Universities ──────────────────────────────────────── */
+.unis {
+  margin-top: 32px; padding: 28px 48px;
+  background: #fff; border: 1px solid #e8d8c0; border-radius: 2px;
+}
+.unis-label, .awards-label {
+  font-family: 'Space Grotesk', sans-serif; font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: #b5521c; margin-bottom: 16px;
+}
+.unis-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; align-items: center; }
+.uni {
+  font-family: 'EB Garamond', serif; font-size: 22px; font-weight: 600;
+  color: #2d1c09; text-align: center;
+}
+.uni .uni-sub {
+  display: block; font-family: 'Space Grotesk', sans-serif; font-size: 10px;
+  letter-spacing: 0.12em; color: #8a6a4a; margin-top: 6px; text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* ── Awards (1MWTT) ────────────────────────────────────── */
+.awards {
+  margin-top: 32px; padding: 32px 48px;
+  background: #fff; border: 1px solid #e8d8c0; border-radius: 2px;
+}
+.awards-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.award {
+  padding: 14px 18px; border-left: 3px solid #b5521c;
+}
+.award .a-src {
+  font-family: 'Playfair Display', serif; font-size: 18px;
+  font-weight: 600; color: #2d1c09; margin-bottom: 4px;
+}
+.award .a-label {
+  font-family: 'Space Grotesk', sans-serif; font-size: 10.5px;
+  color: #8a6a4a; line-height: 1.5; letter-spacing: 0.02em;
+}
+
+/* ── Section head ──────────────────────────────────────── */
+.section-head {
+  margin-top: 80px; padding-bottom: 18px;
+  border-bottom: 1px solid #e8d8c0;
+}
+.section-head .eyebrow {
+  font-family: 'Space Grotesk', sans-serif; font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: #b5521c; margin-bottom: 12px;
+}
+.section-head h2 {
+  font-family: 'Playfair Display', serif; font-size: 42px;
+  font-weight: 400; letter-spacing: -0.01em;
+}
+.section-head h2 em { color: #b5521c; font-style: italic; }
+
+/* ── Thesis teaser (landing) ───────────────────────────── */
+.thesis-teaser {
+  margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 42px;
+}
+.thesis-teaser .thesis-left p {
+  font-size: 18px; line-height: 1.7; color: #4a2f17; margin-bottom: 16px;
+}
+.thesis-formula {
+  display: inline-block; font-family: 'Space Mono', monospace;
+  font-size: 14px; color: #2d1c09; background: #fcebd5;
+  padding: 14px 22px; border-radius: 2px; border: 1px solid #e8d8c0;
+  margin: 12px 0 20px;
+}
+.thesis-formula .eq { color: #b5521c; }
+.thesis-teaser .pillars { display: flex; flex-direction: column; gap: 18px; }
+.thesis-teaser .pillar {
+  padding: 22px 26px; background: #fff; border: 1px solid #e8d8c0; border-radius: 2px;
+}
+.thesis-teaser .pillar .p-num {
+  font-family: 'Space Grotesk', sans-serif; font-size: 10px;
+  letter-spacing: 0.16em; color: #b5521c; margin-bottom: 10px; text-transform: uppercase;
+}
+.thesis-teaser .pillar h4 {
+  font-family: 'Playfair Display', serif; font-size: 20px;
+  font-weight: 600; margin-bottom: 6px; color: #2d1c09;
+}
+.thesis-teaser .pillar p {
+  font-family: 'Space Grotesk', sans-serif; font-size: 13px;
+  line-height: 1.65; color: #6b4c2a;
+}
+
+/* ── Portfolio ─────────────────────────────────────────── */
+.pc-grid {
+  margin-top: 28px; display: grid;
+  grid-template-columns: repeat(2, 1fr); gap: 18px;
+}
+.pc-card {
+  border: 1px solid #e8d8c0; padding: 28px;
+  background: #fff; transition: all 0.2s;
+}
+.pc-card:hover { border-color: #b5521c; }
+.pc-card .pc-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 12px;
+}
+.pc-card h3 {
+  font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 500;
+}
+.pc-card h3 .stealth-tag {
+  color: #a88a5e; font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px; font-weight: 400;
+}
+.pc-card .pc-status {
+  font-family: 'Space Grotesk', sans-serif; font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: #b5521c;
+}
+.pc-card p {
+  font-family: 'Space Grotesk', sans-serif; font-size: 13.5px;
+  line-height: 1.7; color: #6b4c2a;
+}
+.pc-card .pc-sector {
+  font-family: 'Space Grotesk', sans-serif; font-size: 10px;
+  letter-spacing: 0.12em; color: #a88a5e; margin-top: 14px; text-transform: uppercase;
+}
+
+/* ── Founder ───────────────────────────────────────────── */
+.founder {
+  margin-top: 36px; padding: 44px 48px;
+  background: #fff; border: 1px solid #e8d8c0;
+  display: grid; grid-template-columns: 160px 1fr; gap: 40px; align-items: start;
+}
+.founder-avatar {
+  width: 160px; height: 160px; border-radius: 50%;
+  background: linear-gradient(135deg, #b5521c, #8a3e14);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-size: 60px; color: #fdf6ec;
+  overflow: hidden; flex-shrink: 0;
+}
+.founder-avatar img {
+  width: 100%; height: 100%; object-fit: cover;
+  border-radius: 50%; display: block;
+}
+.founder h3 {
+  font-family: 'Playfair Display', serif; font-size: 34px;
+  font-weight: 500; margin-bottom: 4px; color: #2d1c09;
+}
+.founder-title {
+  font-family: 'Space Grotesk', sans-serif; font-size: 13px;
+  color: #b5521c; margin-bottom: 20px; letter-spacing: 0.03em;
+}
+.founder p {
+  font-size: 15.5px; line-height: 1.75; color: #4a2f17; margin-bottom: 12px;
+}
+.founder-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.chip {
+  font-family: 'Space Grotesk', sans-serif; font-size: 11px;
+  padding: 5px 12px; border: 1px solid #b5521c; color: #b5521c;
+  border-radius: 999px; letter-spacing: 0.02em;
+}
+
+/* ── Fellowship ────────────────────────────────────────── */
+.fellowship { margin-top: 36px; }
+.fellow-bench {
+  margin-top: 0; display: grid;
+  grid-template-columns: repeat(4, 1fr); gap: 18px;
+}
+.fb-col {
+  background: #fff; border: 1px solid #e8d8c0; padding: 22px;
+}
+.fb-col.mine { border-color: #b5521c; background: #fcebd5; }
+.fb-name {
+  font-family: 'Playfair Display', serif; font-size: 17px;
+  font-weight: 600; color: #2d1c09; margin-bottom: 8px;
+}
+.fb-desc {
+  font-family: 'Space Grotesk', sans-serif; font-size: 12.5px;
+  color: #6b4c2a; line-height: 1.6;
+}
+
+/* ── Investment criteria ───────────────────────────────── */
+.criteria {
+  margin-top: 36px; padding: 40px 48px;
+  background: #2d1c09; color: #fdf6ec;
+}
+.criteria h3 {
+  font-family: 'Playfair Display', serif; font-size: 28px;
+  font-weight: 500; margin-bottom: 24px; color: #fdf6ec;
+}
+.criteria-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.crit .crit-label {
+  font-family: 'Space Grotesk', sans-serif; font-size: 10px;
+  letter-spacing: 0.16em; color: #f5b870; text-transform: uppercase; margin-bottom: 8px;
+}
+.crit .crit-value {
+  font-family: 'Playfair Display', serif; font-size: 24px; color: #fdf6ec;
+  margin-bottom: 6px; font-weight: 500;
+}
+.crit p {
+  font-family: 'Space Grotesk', sans-serif; font-size: 12.5px;
+  color: #d9bf96; line-height: 1.6;
+}
+
+/* ── Mission block (dark) with Read Our Thesis CTA ────── */
+.mission {
+  margin-top: 64px; padding: 88px 72px;
+  background: #2d1c09; color: #fdf6ec;
+}
+.mission h2 {
+  font-family: 'Playfair Display', serif; font-size: 54px; font-weight: 400;
+  line-height: 1.1; letter-spacing: -0.01em;
+  max-width: 880px; margin-bottom: 28px;
+}
+.mission h2 em { color: #f5b870; font-style: italic; }
+.mission p {
+  font-family: 'EB Garamond', serif; font-size: 17px; line-height: 1.65;
+  color: #d9bf96; max-width: 680px; margin-bottom: 36px;
+}
+.cta-mission {
+  display: inline-block; padding: 14px 26px;
+  background: #b5521c; color: #fdf6ec; border-radius: 2px;
+  font-family: 'Space Grotesk', sans-serif; font-size: 13px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none; transition: background 0.15s;
+}
+.cta-mission:hover { background: #8a3e14; }
+
+/* ── 3-row CTA (Apply / Inquire rows) ──────────────────── */
+.roles {
+  background: #fdf6ec;
+}
+.roles-inner {
+  max-width: 1280px; margin: 0 auto; padding: 72px 64px 40px;
+}
+.roles .eyebrow {
+  font-family: 'Space Grotesk', sans-serif; font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: #b5521c; margin-bottom: 18px;
+}
+.roles h3 {
+  font-family: 'Playfair Display', serif; font-size: 36px;
+  font-weight: 400; letter-spacing: -0.01em; margin-bottom: 32px;
+  color: #2d1c09;
+}
+.role-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 24px 0; border-top: 1px solid #e8d8c0;
+  gap: 24px;
+}
+.role-row:last-child { border-bottom: 1px solid #e8d8c0; }
+.role-info h4 {
+  font-family: 'Playfair Display', serif; font-size: 22px;
+  font-weight: 500; color: #2d1c09; margin-bottom: 4px;
+}
+.role-info .r-meta {
+  font-family: 'Space Grotesk', sans-serif; font-size: 12.5px;
+  color: #8a6a4a; letter-spacing: 0.02em;
+}
+.role-row a {
+  font-family: 'Space Grotesk', sans-serif; font-size: 11px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: #b5521c; text-decoration: none;
+  padding: 10px 0; border-bottom: 1px solid #b5521c;
+  white-space: nowrap; transition: color 0.15s;
+}
+.role-row a:hover { color: #8a3e14; border-color: #8a3e14; }
+
+/* ── Footer ────────────────────────────────────────────── */
+.site-footer {
+  max-width: 1280px; margin: 0 auto; padding: 30px 64px 50px;
+  border-top: 1px solid #e8d8c0;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'Space Grotesk', sans-serif; font-size: 11px; color: #8a6a4a;
+  letter-spacing: 0.04em; gap: 24px;
+}
+.footer-brand { display: flex; flex-direction: column; gap: 6px; }
+.footer-logo {
+  font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600;
+  color: #2d1c09; line-height: 1;
+}
+.footer-tag {
+  font-family: 'Space Grotesk', sans-serif; font-size: 11px;
+  color: #8a6a4a; letter-spacing: 0.04em;
+}
+.footer-meta {
+  font-family: 'Space Grotesk', sans-serif; font-size: 11px;
+  color: #b5521c; letter-spacing: 0.08em; text-transform: uppercase;
+  max-width: 320px; text-align: right;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Thesis page
+   ═══════════════════════════════════════════════════════════ */
+
+.thesis-hero {
+  padding: 80px 64px 40px;
+  max-width: 1280px; margin: 0 auto;
+}
+.thesis-hero .back {
+  display: inline-block; font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: #b5521c; text-decoration: none; margin-bottom: 32px;
+}
+.thesis-hero .back:hover { color: #8a3e14; }
+.thesis-hero .kicker {
+  font-family: 'Space Grotesk', sans-serif; font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: #b5521c; margin-bottom: 20px;
+}
+.thesis-hero h1 {
+  font-family: 'Playfair Display', serif; font-size: 88px; font-weight: 400;
+  line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 28px;
+}
+.thesis-hero h1 em { color: #b5521c; font-style: italic; }
+.thesis-hero .lead {
+  font-family: 'EB Garamond', serif; font-size: 22px; line-height: 1.5;
+  color: #4a2f17; max-width: 780px;
+}
+
+.thesis-body {
+  max-width: 1280px; margin: 0 auto; padding: 40px 64px 80px;
+}
+
+.thesis-chapter {
+  display: grid; grid-template-columns: 260px 1fr; gap: 60px;
+  padding: 60px 0; border-top: 1px solid #e8d8c0;
+  align-items: start;
+}
+.thesis-chapter .ch-marker {
+  position: sticky; top: 32px;
+}
+.thesis-chapter .ch-num {
+  font-family: 'Space Mono', monospace; font-size: 11px;
+  letter-spacing: 0.18em; color: #b5521c; margin-bottom: 10px;
+}
+.thesis-chapter .ch-title {
+  font-family: 'Playfair Display', serif; font-size: 24px;
+  font-weight: 600; color: #2d1c09; line-height: 1.2;
+}
+.thesis-chapter .ch-body h3 {
+  font-family: 'Playfair Display', serif; font-size: 32px;
+  font-weight: 400; color: #2d1c09; margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+.thesis-chapter .ch-body h4 {
+  font-family: 'Playfair Display', serif; font-size: 20px;
+  font-weight: 600; color: #2d1c09; margin: 28px 0 10px;
+}
+.thesis-chapter .ch-body p {
+  font-family: 'EB Garamond', serif; font-size: 18px; line-height: 1.7;
+  color: #4a2f17; margin-bottom: 18px;
+}
+.thesis-chapter .ch-body strong { color: #2d1c09; }
+.thesis-chapter .ch-body ul {
+  margin: 14px 0 18px 0; padding-left: 0; list-style: none;
+}
+.thesis-chapter .ch-body ul li {
+  font-family: 'EB Garamond', serif; font-size: 17px; line-height: 1.6;
+  color: #4a2f17; padding-left: 24px; position: relative; margin-bottom: 10px;
+}
+.thesis-chapter .ch-body ul li::before {
+  content: '→'; position: absolute; left: 0; color: #b5521c; font-weight: 700;
+}
+.thesis-chapter .ch-body .pullquote {
+  border-left: 3px solid #b5521c; padding: 6px 0 6px 24px;
+  margin: 24px 0; font-style: italic;
+  font-family: 'Playfair Display', serif; font-size: 22px;
+  line-height: 1.4; color: #2d1c09;
+}
+
+.thesis-body .thesis-formula {
+  display: block; margin: 8px 0 20px;
+  font-size: 15px; padding: 16px 24px;
+}
+
+.thesis-cta {
+  margin-top: 72px; padding: 64px 48px;
+  background: #2d1c09; color: #fdf6ec; text-align: center;
+}
+.thesis-cta h3 {
+  font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 400;
+  margin-bottom: 14px; line-height: 1.2;
+}
+.thesis-cta h3 em { color: #f5b870; font-style: italic; }
+.thesis-cta p {
+  font-family: 'EB Garamond', serif; font-size: 17px;
+  color: #d9bf96; margin-bottom: 28px; max-width: 560px;
+  margin-left: auto; margin-right: auto;
+}
+.thesis-cta a.cta-copper { background: #b5521c; }
+.thesis-cta a.cta-copper:hover { background: #f5b870; color: #2d1c09; }
+
+/* ═══════════════════════════════════════════════════════════
+   Responsive
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 1080px) {
+  .container,
+  .roles-inner,
+  .site-footer,
+  .thesis-hero,
+  .thesis-body { padding-left: 40px; padding-right: 40px; }
+  nav.site-nav { padding: 24px 40px; }
+  .hero-text h1 { font-size: 60px; }
+  .thesis-hero h1 { font-size: 68px; }
+  .mission h2 { font-size: 42px; }
+  .thesis-chapter { grid-template-columns: 200px 1fr; gap: 40px; }
+}
+
+@media (max-width: 820px) {
+  .container,
+  .roles-inner,
+  .site-footer,
+  .thesis-hero,
+  .thesis-body { padding-left: 22px; padding-right: 22px; }
+  nav.site-nav { padding: 18px 22px; flex-wrap: wrap; gap: 12px; }
+  .navlinks { gap: 16px; flex-wrap: wrap; }
+
+  .hero { grid-template-columns: 1fr; gap: 32px; padding: 48px 0 40px; }
+  .hero-text h1 { font-size: 42px; line-height: 1.08; }
+  .hero-text p { font-size: 16px; }
+
+  .credentials-strip,
+  .pc-grid,
+  .fellow-bench,
+  .unis-row,
+  .awards-row,
+  .criteria-grid,
+  .thesis-teaser { grid-template-columns: 1fr; gap: 14px; }
+
+  .credentials-strip { padding: 28px 22px; }
+  .unis, .awards, .criteria { padding: 26px 22px; }
+  .section-head h2 { font-size: 30px; }
+  .founder { grid-template-columns: 1fr; gap: 24px; padding: 28px 22px; }
+  .founder-avatar { width: 100px; height: 100px; font-size: 38px; }
+  .founder h3 { font-size: 28px; }
+
+  .mission { padding: 56px 22px; }
+  .mission h2 { font-size: 30px; }
+
+  .roles-inner { padding: 48px 22px 30px; }
+  .roles h3 { font-size: 26px; }
+  .role-row { flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 0; }
+
+  .site-footer { flex-direction: column; gap: 14px; align-items: flex-start; padding: 24px 22px 40px; }
+  .footer-meta { text-align: left; }
+
+  .thesis-hero { padding: 48px 22px 24px; }
+  .thesis-hero h1 { font-size: 46px; }
+  .thesis-hero .lead { font-size: 18px; }
+  .thesis-chapter { grid-template-columns: 1fr; gap: 16px; padding: 40px 0; }
+  .thesis-chapter .ch-marker { position: static; }
+  .thesis-chapter .ch-body h3 { font-size: 26px; }
+  .thesis-chapter .ch-body p { font-size: 16px; }
+  .thesis-cta { padding: 48px 22px; }
+  .thesis-cta h3 { font-size: 24px; }
+}
