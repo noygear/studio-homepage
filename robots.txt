@@ -1,0 +1,82 @@
+# robots.txt for noygear.ai
+# The legal pages (terms.html, privacy.html) are intentionally excluded from
+# search indexing and AI/LLM ingestion. The rest of the site is crawlable.
+# Note: robots.txt is advisory. Well-behaved crawlers honor it; not all do.
+# The legal pages also carry noindex/noai meta tags as a second layer.
+
+User-agent: *
+Disallow: /terms.html
+Disallow: /privacy.html
+
+# AI and LLM crawlers and dataset collectors
+User-agent: GPTBot
+Disallow: /terms.html
+Disallow: /privacy.html
+
+User-agent: OAI-SearchBot
+Disallow: /terms.html
+Disallow: /privacy.html
+
+User-agent: ChatGPT-User
+Disallow: /terms.html
+Disallow: /privacy.html
+
+User-agent: ClaudeBot
+Disallow: /terms.html
+Disallow: /privacy.html
+
+User-agent: Claude-Web
+Disallow: /terms.html
+Disallow: /privacy.html
+
+User-agent: anthropic-ai
+Disallow: /terms.html
+Disallow: /privacy.html
+
+User-agent: Google-Extended
+Disallow: /terms.html
+Disallow: /privacy.html
+
+User-agent: CCBot
+Disallow: /terms.html
+Disallow: /privacy.html
+
+User-agent: PerplexityBot
+Disallow: /terms.html
+Disallow: /privacy.html
+
+User-agent: Applebot-Extended
+Disallow: /terms.html
+Disallow: /privacy.html
+
+User-agent: Amazonbot
+Disallow: /terms.html
+Disallow: /privacy.html
+
+User-agent: Bytespider
+Disallow: /terms.html
+Disallow: /privacy.html
+
+User-agent: Meta-ExternalAgent
+Disallow: /terms.html
+Disallow: /privacy.html
+
+User-agent: FacebookBot
+Disallow: /terms.html
+Disallow: /privacy.html
+
+User-agent: cohere-ai
+Disallow: /terms.html
+Disallow: /privacy.html
+
+User-agent: Diffbot
+Disallow: /terms.html
+Disallow: /privacy.html
+
+User-agent: Omgilibot
+Disallow: /terms.html
+Disallow: /privacy.html
+
+User-agent: ImagesiftBot
+Disallow: /terms.html
+Disallow: /privacy.html
