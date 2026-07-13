@@ -1,14 +1,19 @@
 # robots.txt for noygear.ai
-# The legal pages (terms.html, privacy.html) are intentionally excluded from
-# search indexing and AI/LLM ingestion. The rest of the site is crawlable.
-# Note: robots.txt is advisory. Well-behaved crawlers honor it; not all do.
-# The legal pages also carry noindex/noai meta tags as a second layer.
+#
+# Search crawlers may fetch every page, including the legal pages. The legal
+# pages (terms.html, privacy.html) carry a noindex meta tag, so allowing the
+# fetch lets search engines read that tag and keep the pages out of results.
+# A blanket Disallow would block the fetch, the noindex would never be seen,
+# and the URLs could still surface as bare, link-only results.
+#
+# AI and LLM crawlers and dataset collectors are disallowed from the legal
+# pages, because they rely on robots.txt rather than on the noindex tag.
+# Note: robots.txt is advisory. Well-behaved crawlers honor it, not all do.
 
 User-agent: *
-Disallow: /terms.html
-Disallow: /privacy.html
+Disallow:
 
-# AI and LLM crawlers and dataset collectors
+# AI and LLM crawlers and dataset collectors: no access to the legal pages.
 User-agent: GPTBot
 Disallow: /terms.html
 Disallow: /privacy.html
