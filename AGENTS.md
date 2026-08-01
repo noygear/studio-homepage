@@ -34,32 +34,20 @@ Apply the standard label families where they fit: `priority:p{0,1,2}`, `phase:*`
 ## Writing style
 
 Prose you write for noygear follows the house style. The `noygear-writing-style` skill in
-`automations` carries the self-check pass. It installs into machine-level agent
-directories and is absent from every other repo, so everything below stands on its own and
-needs no network, no `gh`, and no org access.
+`automations` carries the fuller rules and a self-check pass.
 
 - No em dashes, no semicolons, no markdown emphasis in prose, and no "X, not Y" antithesis.
   These are stated rather than assumed because the default pull runs the other way.
 - Back claims with data and concrete examples.
-- No banned words. The list is closed and is a binary match rather than a judgment call.
-  Match case-insensitively on word boundaries, so `discover` is blocked while `Discovery`
-  as a product name is not. Multi-word entries block only as the whole phrase, so
-  `in a world where` is blocked while `world` alone is not. Skip URLs, code blocks, product
-  names, and direct quotes. Rewriting a customer's own words or a code sample to satisfy
-  this rule corrupts content you were meant to preserve. Fix a real hit by deleting and
-  tightening rather than swapping in a synonym from the same list. All 64:
-  can, may, just, that, very, really, literally, actually, certainly, probably,
-  basically, could, maybe, delve, embark, enlightening, esteemed, shed light, craft,
-  crafting, imagine, realm, game-changer, unlock, discover, skyrocket, abyss, not alone,
-  in a world where, revolutionize, disruptive, utilize, utilizing, dive deep, tapestry,
-  illuminate, unveil, pivotal, intricate, elucidate, hence, furthermore, however,
-  harness, exciting, groundbreaking, cutting-edge, remarkable, it, remains to be seen,
-  glimpse into, navigating, landscape, stark, testament, in summary, in conclusion,
-  moreover, boost, skyrocketing, opened up, powerful, inquiries, ever-evolving.
 - Write for an intelligent non-specialist. Avoid jargon and consulting speak.
 - Prefer paragraphs. Reserve bullet lists for social posts and client deliverables.
 - Technical documentation stays precise and keeps the detail a specialist needs. Lead it
   with a short summary a non-specialist can follow before the deep detail starts.
+
+The closed banned-word list is suspended while the style guide is reworked into something
+more flexible. It blocked ordinary words including "can", "may", "it", and "that", which
+cost more in contorted prose than it bought. Do not enforce it, and do not enforce it from
+the skill's `references/banned-words.md` either.
 
 ## Scope control
 
