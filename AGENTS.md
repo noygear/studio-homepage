@@ -158,7 +158,6 @@ style was set aside on purpose.
 
 This repo backs a deployed site. `main` is published to production at
 [noygear.ai](https://noygear.ai) by GitHub Pages (the `CNAME` file points there). Treat any
-change to `main` as production-facing: it goes live as soon as it merges. The shared standard
-above describes the single-`main`-branch flow, which still applies here, but note that "not a
-deployed web app" in that block does not match this repo. There is no separate staging branch,
-so review and verify before merging to `main`.
+change to `main` as production-facing: it goes live as soon as it merges. The single-`main`-branch
+flow in the shared standard above applies here. There is no separate staging branch, so review
+and verify before merging to `main`.
