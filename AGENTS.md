@@ -6,146 +6,67 @@ These standards are shared across all noygear repositories and are managed centr
 
 ## Git workflow
 
-- Never commit or push directly to the production branch. Create a branch for every
-  change first.
+- Never commit or push directly to the default branch. Create a branch first. Branch
+  protection is not available on these private repos, so nothing rejects the push if you
+  skip this.
 - Open a pull request for every change, including documentation-only updates.
-- Treat branch protection as the source of truth. Do not work around it.
-- Keep one logical change per pull request so reviews stay small and reversible.
-- When a pull request addresses a GitHub issue, link it in the description with
-  `Closes #<issue>` (or `Fixes` / `Resolves`) so the issue auto-closes on merge. Use the
-  fully qualified form `Closes noygear/<repo>#<issue>` when the issue lives in another repo.
+- When a pull request addresses a GitHub issue, link it with `Closes #<issue>`. Use the
+  fully qualified `Closes noygear/<repo>#<issue>` when the issue lives in another repo.
 
 ## Branching strategy (standard)
 
-This repository is not a deployed web app. It uses a single long-lived branch:
-
-- `main` (or `master` where the repo predates the rename) is the only protected branch.
-
-```
-feature/xyz  ->  main
-```
-
-Rules:
-
-- Open every pull request against the default branch.
-- There is no `develop` branch here. Do not create one.
-- Keep feature branches short-lived and delete them after merge.
+- This repo has one long-lived branch. Open every pull request against the default branch,
+  which is `main` in most repos and `master` in `planning`, `grants`, and `function-legal`.
 
 ## GitHub issue hygiene
 
-Every GitHub issue must carry a native issue type. When you create an issue, or notice an
-existing one without a type, set it. No issue ships untyped.
+Every issue carries a native type, set with `gh issue create --type <Type>` or
+`gh issue edit <n> --type <Type>`. The org taxonomy is `Epic` for a multi-story body of
+work, `Story` for a user-facing unit of value, `Task` for most engineering and process
+work, `Bug` for a real defect, and `Feature` for a capability not yet broken into stories.
 
-### Native types (org-level taxonomy)
+`Bug` means a real defect, not "waiting on external data". An issue that only needs
+information from a stakeholder is a `Task`. Typing it `Bug` pollutes defect triage.
 
-| Type | Use for |
-|------|---------|
-| `Epic` | A multi-story body of work, such as a product MVP. |
-| `Story` | A user-facing unit of value, written in story format. |
-| `Task` | A specific piece of engineering or process work (most child issues). |
-| `Bug` | A defect in existing behavior. Something that worked or should work is broken. |
-| `Feature` | A requested capability not yet broken into stories. |
-
-`Bug` means a real defect, not "waiting on external data." An issue that only needs
-information from a stakeholder is a `Task`, not a `Bug`. Typing it `Bug` pollutes defect
-triage.
-
-These native types are distinct from `type:*` labels (such as `type:design`,
-`type:interview`, `type:document`), which describe a deliverable. An issue can carry both.
-
-### Setting the type
-
-Recent `gh` versions set the issue type by name directly, on both `create` and `edit`:
-
-```bash
-gh issue create --repo noygear/<repo> --title "..." --body "..." --type Task
-gh issue edit <number> --repo noygear/<repo> --type Bug
-```
-
-If your `gh` is too old to have `--type` (run `gh issue create --help` to check), fall back
-to the GraphQL API. Issue types live on the organization:
-
-```bash
-# 1. Look up the type ids once.
-gh api graphql -f query='{organization(login:"noygear"){issueTypes(first:20){nodes{id name}}}}'
-
-# 2. Get the issue node id, then set the type.
-NODE=$(gh issue view <number> --json id --jq .id)
-gh api graphql \
-  -f query='mutation($i:ID!,$t:ID!){updateIssue(input:{id:$i,issueTypeId:$t}){issue{number issueType{name}}}}' \
-  -f i="$NODE" -f t="<issueTypeId>"
-```
-
-### Labels and hygiene
-
-- Apply the standard label families where they fit: `priority:p{0,1,2}`, `phase:*`,
-  `product:*`, `customer:*`, and the relevant `persona:*` or `system:*` labels.
-- Do not hand-apply `delivery-os:needs-hygiene`. The Delivery OS hygiene checker applies and
-  clears it automatically based on `automations/configs/rules.yaml`.
-- Keep issues that are `In Progress` moving. The hygiene checker flags an issue that sits
-  `In Progress` without an update past the configured stale window.
-
-## Technology selection
-
-- Prefer current, actively supported, future-proof platforms, APIs, SDKs, and integration
-  patterns over legacy or compatibility-first approaches.
-- Do not default to older systems just because they are more common in examples, tutorials,
-  or training data. Correct for that bias and say when you are doing so.
-- Before building an integration, check whether a newer or more capable first-party API
-  better supports the likely next step, such as drafts, labels, metadata updates, richer
-  permissions, webhooks, structured objects, or partial updates.
-- Choose the path that will still be the right foundation when the project needs more
-  advanced capabilities, even if it costs a little more setup now.
-- Use a legacy option only when there is a clear, documented reason, such as an external
-  constraint, an explicit requirement, or a missing capability in the modern platform.
-
-### Legacy-avoidance check
-
-When choosing a technical approach, ask one extra question: is this the most current and
-future-forward implementation path? If there is meaningful risk of landing on an older
-stack, do one more round of verification before you implement.
+Apply the standard label families where they fit: `priority:p{0,1,2}`, `phase:*`,
+`product:*`, `customer:*`, and the relevant `persona:*` or `system:*` labels.
 
 ## Writing style
 
-All human-readable prose you produce for noygear follows the company house style. This
-covers chat replies longer than one sentence, commit messages, PR descriptions, issues,
-reports, memos, and docs. It does not cover raw code, JSON, YAML, CSV, or log output.
+Prose you write for noygear follows the house style. The `noygear-writing-style` skill in
+`automations` carries the self-check pass. It installs into machine-level agent
+directories and is absent from every other repo, so everything below stands on its own and
+needs no network, no `gh`, and no org access.
 
-Claude Code users: the `noygear-writing-style` skill carries the full rules and a
-self-check pass. Invoke it for any writing or editing task. The rules in brief, for agents
-that do not load the skill:
-
-- Clear, simple language. Short sentences. Active voice. Address the reader as "you".
+- No em dashes, no semicolons, no markdown emphasis in prose, and no "X, not Y" antithesis.
+  These are stated rather than assumed because the default pull runs the other way.
 - Back claims with data and concrete examples.
-- No em dashes. Use commas, periods, or rewrite.
-- No semicolons. Split into two sentences.
-- No asterisks for emphasis, no markdown emphasis in prose, no hashtags.
-- No metaphors, clichés, filler adjectives, or "X, not Y" antithesis flourishes.
-- No setup phrases such as "in conclusion" or "in summary".
-- No banned words. The skill's `references/banned-words.md` has the full list.
-- Reserve bullet lists for social posts. Prefer paragraphs in other prose. Client
-  deliverables are the exception and may use headings, bold labels, bullets, and tables.
-- Avoid unnecessary jargon and consulting speak. Write for an intelligent non-specialist by
-  default. Respect the reader's intelligence without assuming they share your context.
-
-Technical documentation should still be technically precise and carry the details a
-specialist needs. Even there, lead with a short executive summary, an "explain it to a
-smart ten-year-old" preface, that a non-specialist can follow before the deep detail starts.
-
-If the user asks for another voice, follow the user and note in one line that the house
-style was set aside on purpose.
+- No banned words. The list is closed and is a binary match rather than a judgment call.
+  Match case-insensitively on word boundaries, so `discover` is blocked while `Discovery`
+  as a product name is not. Multi-word entries block only as the whole phrase, so
+  `in a world where` is blocked while `world` alone is not. Skip URLs, code blocks, product
+  names, and direct quotes. Rewriting a customer's own words or a code sample to satisfy
+  this rule corrupts content you were meant to preserve. Fix a real hit by deleting and
+  tightening rather than swapping in a synonym from the same list. All 64:
+  can, may, just, that, very, really, literally, actually, certainly, probably,
+  basically, could, maybe, delve, embark, enlightening, esteemed, shed light, craft,
+  crafting, imagine, realm, game-changer, unlock, discover, skyrocket, abyss, not alone,
+  in a world where, revolutionize, disruptive, utilize, utilizing, dive deep, tapestry,
+  illuminate, unveil, pivotal, intricate, elucidate, hence, furthermore, however,
+  harness, exciting, groundbreaking, cutting-edge, remarkable, it, remains to be seen,
+  glimpse into, navigating, landscape, stark, testament, in summary, in conclusion,
+  moreover, boost, skyrocketing, opened up, powerful, inquiries, ever-evolving.
+- Write for an intelligent non-specialist. Avoid jargon and consulting speak.
+- Prefer paragraphs. Reserve bullet lists for social posts and client deliverables.
+- Technical documentation stays precise and keeps the detail a specialist needs. Lead it
+  with a short summary a non-specialist can follow before the deep detail starts.
 
 ## Scope control
 
-- Do not commit unrelated untracked files. Stage only what the change needs.
-- Ask before including generated archives, exports, or local planning notes that are not
-  clearly part of the requested change.
+- When you bump a version or change dependency versions, commit the updated lock file in
+  the same change. A version bump without its lock file has caused drift here before.
 - Treat source directories as canonical for skills and plugins. Do not commit zip archives
-  or packaged `.plugin` and `.skill` files when the source tree is present. Regenerate
-  packaged artifacts locally or in CI when a release step needs them.
-- When you bump a project version or change dependency versions, commit the updated lock
-  file in the same change (for example `uv.lock`, `package-lock.json`, `pnpm-lock.yaml`,
-  `poetry.lock`). A version bump without its lock file has caused drift here before.
+  or packaged `.plugin` and `.skill` files when the source tree is present.
 - Keep secrets out of Git.
 
 <!-- END NOYGEAR SHARED STANDARDS -->
