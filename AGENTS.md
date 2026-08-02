@@ -33,21 +33,28 @@ Apply the standard label families where they fit: `priority:p{0,1,2}`, `phase:*`
 
 ## Writing style
 
-Prose you write for noygear follows the house style. The `noygear-writing-style` skill in
-`automations` carries the fuller rules and a self-check pass.
+Write the way a sharp colleague writes a note. The failure mode is press-release voice:
+long sentences, decorative adjectives, and a claim of importance standing in for a fact.
+Name the number, the date, the person. Cut any word whose removal would not change the
+meaning. Default to paragraphs, since bullet lists belong to social posts and to
+structured client deliverables.
 
-- No em dashes, no semicolons, no markdown emphasis in prose, and no "X, not Y" antithesis.
-  These are stated rather than assumed because the default pull runs the other way.
-- Back claims with data and concrete examples.
-- Write for an intelligent non-specialist. Avoid jargon and consulting speak.
-- Prefer paragraphs. Reserve bullet lists for social posts and client deliverables.
-- Technical documentation stays precise and keeps the detail a specialist needs. Lead it
-  with a short summary a non-specialist can follow before the deep detail starts.
+Avoid the tells that mark prose as machine-written: em dashes, semicolons, bold-label
+bullet lists, significance inflation ("pivotal", "testament to", "underscores"),
+participial tails ("..., reflecting broader trends"), and mirrored "not X, but Y"
+phrasing. None are banned. Reach for one only when nothing plainer carries the meaning,
+which is rare, and rarer still in anything a customer reads.
 
-The closed banned-word list is suspended while the style guide is reworked into something
-more flexible. It blocked ordinary words including "can", "may", "it", and "that", which
-cost more in contorted prose than it bought. Do not enforce it, and do not enforce it from
-the skill's `references/banned-words.md` either.
+Match the polish to the audience. A PR description, issue, or engineering note can be
+rough and use our jargon freely. A customer email, proposal, or report gets a full editing
+pass and no internal shorthand.
+
+Open any document longer than a few paragraphs with a summary an intelligent high school
+student could follow: same substance, no specialist vocabulary, no assumed background.
+What comes after it can be as technical as the subject requires.
+
+The full guide is `agent-standards/writing-style.md` in `noygear/automations`, and the
+`noygear-writing-style` skill carries it with the document templates.
 
 ## Scope control
 
