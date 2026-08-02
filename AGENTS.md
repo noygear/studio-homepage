@@ -49,9 +49,10 @@ Match the polish to the audience. A PR description, issue, or engineering note c
 rough and use our jargon freely. A customer email, proposal, or report gets a full editing
 pass and no internal shorthand.
 
-Open any document longer than a few paragraphs with a summary an intelligent high school
-student could follow: same substance, no specialist vocabulary, no assumed background.
-What comes after it can be as technical as the subject requires.
+Start every PR description with one information-dense paragraph that explains its purpose
+and impact to an intelligent non-specialist with no assumed technical background. Open any
+other document longer than a few paragraphs the same way. What follows can be as technical
+as the subject requires.
 
 The full guide is `agent-standards/writing-style.md` in `noygear/automations`, and the
 `noygear-writing-style` skill carries it with the document templates.
