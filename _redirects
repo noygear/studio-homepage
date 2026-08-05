@@ -1,0 +1,23 @@
+# Cloudflare Pages redirects for noygear.ai
+#
+# The podcast booking pages moved to medical.noygear.ai in July 2026. These
+# paths stay alive because the old address is printed inside guest briefs and
+# fax invitations already sent to practices, so retiring it outright would
+# strand a prospect mid-booking.
+#
+# Both sides pointed at the same GoHighLevel widgets (prep oEZrbqhZwgeXpERkRo31,
+# recording N22MsPzDUmPRs6abGJd4, post-recording wdbFGWloUauNmTWgYrZV), so a
+# visitor lands on the same calendar either way.
+#
+# The decorated guest page was deleted, so /podcast/guest goes to the prep call.
+
+/podcast/prep-call            https://medical.noygear.ai/podcast/prep-call            301
+/podcast/prep-call.html       https://medical.noygear.ai/podcast/prep-call            301
+/podcast/recording-call       https://medical.noygear.ai/podcast/recording-call       301
+/podcast/recording-call.html  https://medical.noygear.ai/podcast/recording-call       301
+/podcast/post-recording-call       https://medical.noygear.ai/podcast/post-recording-call  301
+/podcast/post-recording-call.html  https://medical.noygear.ai/podcast/post-recording-call  301
+/podcast/guest                https://medical.noygear.ai/podcast/prep-call            301
+/podcast/guest.html           https://medical.noygear.ai/podcast/prep-call            301
+/podcast                      https://medical.noygear.ai/podcast/                     301
+/podcast/                     https://medical.noygear.ai/podcast/                     301
