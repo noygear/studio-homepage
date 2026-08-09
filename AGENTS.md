@@ -12,6 +12,11 @@ These standards are shared across all noygear repositories and are managed centr
 - Open a pull request for every change, including documentation-only updates.
 - When a pull request addresses a GitHub issue, link it with `Closes #<issue>`. Use the
   fully qualified `Closes noygear/<repo>#<issue>` when the issue lives in another repo.
+- Commit under the identity git is already configured with. Never pass `-c user.email`,
+  `-c user.name`, or `--author` to `git commit`. The email address in your session context
+  belongs to the Claude account, not to this machine, and GitHub attributes commits by
+  author email, so using it lands them on a different account and only a history rewrite
+  undoes that.
 
 ## Branching strategy (standard)
 
@@ -48,6 +53,10 @@ which is rare, and rarer still in anything a customer reads.
 Match the polish to the audience. A PR description, issue, or engineering note can be
 rough and use our jargon freely. A customer email, proposal, or report gets a full editing
 pass and no internal shorthand.
+
+Use the word the customer uses, over a tidier category noun and over one of ours already
+in an internal document, unless it is a term of art that has to be exact.
+Coin a term only where nothing is plainer, and define it on first use.
 
 Start every PR description with one information-dense paragraph that explains its purpose
 and impact to an intelligent non-specialist with no assumed technical background. Open any
