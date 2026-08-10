@@ -74,6 +74,36 @@ The full guide is `agent-standards/writing-style.md` in `noygear/automations`, a
   or packaged `.plugin` and `.skill` files when the source tree is present.
 - Keep secrets out of Git.
 
+## Large file storage
+
+- Large binaries do not go in GitHub. That covers video, audio, images, PDFs, Office files,
+  design files, archives, model weights, installers, and generated exports.
+- Store them in the Noygear Shared Drive. When no project folder is given, the catch-all root
+  is `H:\Shared drives\Noygear PR LLC Team Internal shared drive\RWA Studio Ops\10 Large File Storage`.
+- Commit a Markdown sidecar in the repo where the binary would have lived, named
+  `<original-file-name>.<ext>.md`. It holds the Drive path, the SHA-256, the file size, the
+  technical metadata, a timestamped transcript where the file has speech, visual descriptions,
+  retrieval tags, and review flags. The sidecar is what keeps the repo searchable by a person
+  and by an agent.
+- Each repo's `.gitignore` carries the shared extension block, between the
+  `# Large file sidecar policy` and `# End large file sidecar policy` marker lines. Sidecar
+  `.md` files are never ignored. The block is managed: `scripts/sync-agent-standards.py` in
+  `automations` renders it from `agent-standards/large-file-extensions.txt` and opens the pull
+  request that carries it, so an edit between the markers is overwritten by the next sync.
+  Nothing already tracked is affected, because `.gitignore` does not untrack; to add a
+  covered file on purpose, `git add -f` it, or add a `!` exception below the block and say why.
+- A pre-commit guard blocks staged binaries over 1 MB. Smaller ones pass, because `.gitignore`
+  already stops them being staged by accident and the ones that get through were force-added
+  on purpose, so refusing a 20 kB screenshot would only cost the guard its welcome. It lives at
+  `scripts/git-hooks/guards.d/large-file-guard` in `automations` and is installed into the other
+  repos by running `python scripts/install-git-hooks.py --apply` from an `automations` checkout.
+- A pipeline that generates a covered format into Git, such as a Quarto render committing a
+  `.pdf`, stages it with `git add -f`. Without the `-f` the command exits non-zero and takes the
+  hook or the workflow down with it under `set -e`. The force is the record that it is deliberate.
+- Narrow, documented exceptions go in a `.large-file-sidecar-allowlist` file at the repo root.
+- The `large-file-sidecar` skill in `automations` `nstack/` automates the copy, the hashing, the
+  metadata capture, and the sidecar.
+
 <!-- END NOYGEAR SHARED STANDARDS -->
 
 <!-- Repo-specific instructions below this line are owned by this repo and are preserved across syncs. -->

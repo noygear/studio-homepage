@@ -1,3 +1,80 @@
+# Large file sidecar policy
+#
+# Managed by automations/agent-standards. An edit between these markers is
+# overwritten by the next sync; change agent-standards/large-file-extensions.txt
+# instead.
+#
+# Binaries in these formats belong in the Noygear Shared Drive with a Markdown
+# sidecar committed here in their place. See the large-file storage section of
+# AGENTS.md. Files this repo already tracks are unaffected, because .gitignore
+# does not untrack anything. To add one deliberately, `git add -f <path>`. The
+# pre-commit guard in guards.d/ is the hard block and refuses only files over its
+# size threshold, so a force-added screenshot still goes through.
+#
+# The bracketed spelling covers SCAN.PDF and IMG_1234.JPG as well as the lower
+# case forms. Git matches .gitignore case-sensitively wherever the filesystem is,
+# which includes Linux and CI, while the guard lowercases before matching. Plain
+# `*.pdf` would leave the two disagreeing about exactly those names.
+#
+# This block is written at the top of the file. Everything this repo owns goes
+# below it, where git's last-match-wins rule means it takes precedence. To keep
+# one binary that a line here would otherwise ignore, add an exception below,
+# such as `!fixtures/sample.pdf`, and say why.
+*.[mM][pP]4
+*.[mM][oO][vV]
+*.[mM]4[vV]
+*.[aA][vV][iI]
+*.[mM][kK][vV]
+*.[wW][eE][bB][mM]
+*.[wW][aA][vV]
+*.[mM][pP]3
+*.[mM]4[aA]
+*.[aA][aA][cC]
+*.[aA][iI][fF]
+*.[aA][iI][fF][fF]
+*.[fF][lL][aA][cC]
+*.[pP][nN][gG]
+*.[jJ][pP][gG]
+*.[jJ][pP][eE][gG]
+*.[hH][eE][iI][cC]
+*.[wW][eE][bB][pP]
+*.[gG][iI][fF]
+*.[tT][iI][fF]
+*.[tT][iI][fF][fF]
+*.[pP][sS][dD]
+*.[aA][iI]
+*.[fF][iI][gG]
+*.[sS][kK][eE][tT][cC][hH]
+*.[pP][dD][fF]
+*.[dD][oO][cC]
+*.[dD][oO][cC][xX]
+*.[dD][oO][cC][mM]
+*.[oO][dD][tT]
+*.[xX][lL][sS]
+*.[xX][lL][sS][xX]
+*.[xX][lL][sS][mM]
+*.[xX][lL][sS][bB]
+*.[oO][dD][sS]
+*.[pP][pP][tT]
+*.[pP][pP][tT][xX]
+*.[pP][pP][tT][mM]
+*.[pP][pP][sS]
+*.[pP][pP][sS][xX]
+*.[oO][dD][pP]
+*.[zZ][iI][pP]
+*.7[zZ]
+*.[rR][aA][rR]
+*.[tT][aA][rR]
+*.[gG][zZ]
+*.[dD][mM][gG]
+*.[eE][xX][eE]
+*.[mM][sS][iI]
+*.[oO][nN][nN][xX]
+*.[pP][tT]
+*.[pP][tT][hH]
+*.[sS][aA][fF][eE][tT][eE][nN][sS][oO][rR][sS]
+# End large file sidecar policy
+
 .DS_Store
 *.log
 node_modules/
