@@ -33,6 +33,11 @@ work, `Bug` for a real defect, and `Feature` for a capability not yet broken int
 `Bug` means a real defect, not "waiting on external data". An issue that only needs
 information from a stakeholder is a `Task`. Typing it `Bug` pollutes defect triage.
 
+Before opening a `Task` or `Bug`, add at least one testable item under
+`## Acceptance Criteria`. For a `Bug`, also state the observed and expected behavior;
+include reproduction steps, logs, or screenshots only when they help the implementer.
+Tasks and Bugs do not require story points or parent links.
+
 Apply the standard label families where they fit: `priority:p{0,1,2}`, `phase:*`,
 `product:*`, `customer:*`, and the relevant `persona:*` or `system:*` labels.
 
