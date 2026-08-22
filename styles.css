@@ -14,6 +14,46 @@ body {
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 
+/* ── Focus ─────────────────────────────────────────────── */
+/* One ring for everything focusable, rather than a rule per component.
+   #b5521c is the only palette colour that clears the WCAG 2.2 non-text
+   contrast minimum of 3:1 against all four surfaces the site puts behind a
+   control: cream #fdf6ec 4.67:1, white #ffffff 5.01:1, peach #fcebd5 4.29:1,
+   dark #2d1c09 3.27:1. The darker hover copper #8a3e14 reaches only 2.17:1 on
+   the dark sections, so it cannot carry the ring.
+   The offset keeps the ring clear of the copper CTA fills, so the colour it is
+   measured against is the page behind them and not the button itself.
+   No border-radius here on purpose: outline already follows each element's own
+   radius, and setting one would reshape the element it is drawn around. */
+:focus {
+  outline: 3px solid #b5521c;
+  outline-offset: 2px;
+}
+/* Browsers that understand :focus-visible drop the ring for pointer focus and
+   take it back for keyboard focus. Browsers that do not understand the
+   selector discard both rules as invalid and keep the plain :focus ring. */
+:focus:not(:focus-visible) { outline: none; }
+:focus-visible {
+  outline: 3px solid #b5521c;
+  outline-offset: 2px;
+}
+/* The skip-link target is focused programmatically, never by tabbing, so it
+   takes no ring of its own. */
+main[tabindex="-1"]:focus,
+main[tabindex="-1"]:focus-visible { outline: none; }
+
+/* ── Skip to content ───────────────────────────────────── */
+.skip-link {
+  position: fixed; top: 8px; left: 8px; z-index: 100;
+  padding: 12px 22px;
+  background: #2d1c09; color: #fdf6ec;
+  font-family: 'Space Grotesk', sans-serif; font-size: 12px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none; border-radius: 2px;
+  transform: translateY(-200%);
+}
+.skip-link:focus { transform: none; }
+
 /* ── Layout shell ──────────────────────────────────────── */
 .container { max-width: 1280px; margin: 0 auto; padding: 0 64px; }
 
