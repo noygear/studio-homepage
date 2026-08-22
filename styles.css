@@ -80,11 +80,18 @@ nav.site-nav {
 .navlinks a:hover { color: #a8471a; }
 
 /* ── Hero ──────────────────────────────────────────────── */
+/* The h1 comes first in the DOM on every hero so that the main landmark opens
+   on the page heading, which is where a screen reader's heading shortcut lands.
+   The eyebrow above it is a label for the page, not content that has to precede
+   the title, so it is lifted back into place with order and the rendering is
+   unchanged. Same treatment on .thesis-hero further down. */
 .hero {
   padding: 80px 0 60px;
   display: grid; grid-template-columns: 1.25fr 1fr; gap: 60px; align-items: start;
 }
+.hero-text { display: flex; flex-direction: column; }
 .hero-text .kicker {
+  order: -1;
   font-family: 'Space Grotesk', sans-serif; font-size: 11px;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: #a8471a; margin-bottom: 24px;
@@ -437,14 +444,19 @@ nav.site-nav {
 .thesis-hero {
   padding: 80px 64px 40px;
   max-width: 1280px; margin: 0 auto;
+  display: flex; flex-direction: column;
 }
+/* align-self keeps the link shrink-to-fit: flex blockifies inline-block
+   children, and a full-width link would drag the focus ring across the page. */
 .thesis-hero .back {
+  order: -2; align-self: flex-start;
   display: inline-block; font-family: 'Space Grotesk', sans-serif;
   font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
   color: #a8471a; text-decoration: none; margin-bottom: 32px;
 }
 .thesis-hero .back:hover { color: #8a3e14; }
 .thesis-hero .kicker {
+  order: -1;
   font-family: 'Space Grotesk', sans-serif; font-size: 11px;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: #a8471a; margin-bottom: 20px;
